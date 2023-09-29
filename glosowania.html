@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Głosowanie</title>
+    <link rel="stylesheet" href="glosowanie.css">
+
+</head>
+<body>
+    <h1>Głosowanie na ulubioną partię:</h1>
+    <form id="glosowanieForm">
+        <label>
+            <input type="radio" name="partia" value="Prawo i Sprawiedliwość"> Prawo i Sprawiedliwość
+        </label><br>
+        <label>
+            <input type="radio" name="partia" value="LEWICA"> LEWICA
+        </label><br>
+        <label>
+            <input type="radio" name="partia" value="Konfederacja"> Konfederacja
+        </label><br>
+        <label>
+            <input type="radio" name="partia" value="Bezpartyjni Samorządowcy"> Bezpartyjni Samorządowcy
+        </label><br>
+        <label>
+            <input type="radio" name="partia" value="Platforma Obywatelska"> Platforma Obywatelska
+        </label><br>
+        <button type="submit">Oddaj głos</button>
+    </form>
+
+    <div id="wynik">
+   
+    </div>
+
+    <!-- Dodaj odnośnik do strony głównej -->
+    <br><br>
+    <a href="ewybory.html" id="powrotDoStronyGlownej">Powrót do strony głównej</a>
+
+    <script>
+        document.getElementById("glosowanieForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Zapobiega przeladowaniu strony po nacisnieciu przycisku
+
+            // Pobieramy wybraną opcję z formularza
+            const wybranaPartia = document.querySelector('input[name="partia"]:checked');
+
+            if (wybranaPartia) {
+                const wynikDiv = document.getElementById("wynik");
+                wynikDiv.innerHTML = `Oddałeś głos na: ${wybranaPartia.value}`;
+                // Ukryj formularz po oddaniu głosu
+                document.getElementById("glosowanieForm").style.display = "none";
+            } else {
+                alert("Proszę wybrać partię przed oddaniem głosu.");
+            }
+        });
+        "<br><br>"
+        // Obsługa odnośnika do powrotu do strony głównej
+        document.getElementById("powrotDoStronyGlownej").addEventListener("click", function() {
+            // Tutaj możesz dodać odpowiednią ścieżkę URL do strony głównej
+            window.location.href = "ewybory.html"; // Zmień na odpowiednią ścieżkę
+        });
+    </script>
+</body>
+</html>
